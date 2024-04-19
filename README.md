@@ -2,11 +2,6 @@
 
 In this example, you can create your own ERC721 Drop claim page just by customizing the template with your branding and plugging in your NFT Drop contract address.
 
-This template works with the NFT Drop / Signature Drop contract from thirdweb or when using any of the Drop contract bases or if you implement these extensions:
-
-- [ERC721ClaimConditions](https://portal.thirdweb.com/solidity/extensions/erc721claimconditions)
-- [ERC721ClaimPhases](https://portal.thirdweb.com/solidity/extensions/erc721claimphases)
-
 ## Using This Repo
 
 To create your own version of this template, you can use the following steps:
@@ -19,29 +14,19 @@ npx thirdweb create --template erc721
 
 ### 1. Deploy An NFT Drop on thirdweb
 
-If you haven't already deployed your contract, head over to the thirdweb dashboard and create your own NFT Drop contract.
-
-You can learn how to do that with our guide [Release an NFT drop on your own site without writing any code](https://portal.thirdweb.com/guides/release-an-nft-drop-with-no-code#create-a-drop-contract).
-
 Be sure to configure a **name**, **description**, and **image** for your NFT drop in the dashboard.
 
 ### 2. Configure Parameters
 
-Go to the [`parameters.ts`](/src/consts/parameters.ts) and update the following values:
 
 1. `contractConst`: The smart contract address of your NFT drop.
 2. `chainConst`: The name of the chain that your smart contract is deployed to.
-
-If you are using one of thirdweb's [default supported chains](https://portal.thirdweb.com/react/react.thirdwebprovider#default-chains) You can use the chain name as string.
 
 #### Example
 
 ```ts
 export const chainConst = "ethereum";
 ```
-
-If you are using any other chain, you need to provide the chain object from the `@thirdweb-dev/chains` package to `ThirdwebProvider`'s `activeChain` prop as mentioned [here](https://portal.thirdweb.com/react/react.thirdwebprovider#activechain-recommended).
-
 
 #### Example
 
@@ -50,9 +35,6 @@ import { Sepolia } from '@thirdweb-dev/chains';
 
 export const chainConst = Sepolia;
 ```
-
-If your chain is not included in the `@thirdweb-dev/chains` package, you can provide the chain information yourself by creating an object as mentioned [here](https://portal.thirdweb.com/react/react.thirdwebprovider#custom-evm-chains)
-
 
 ### 3. Customize the Styling
 
@@ -63,8 +45,6 @@ If you want to go further, you can also update the styles in the respective comp
 ### 4. Optional: Add Gasless Transaction Support
 
 If you want to sponsor the gas fees for your user, you can update the `relayerUrlConst` in [`parameters.ts`](/src/consts/parameters.ts) to point to your Open Zeppelin relayer or `biconomyApiKeyConst` and `biconomyApiIdConst` to use Biconomy.
-
-Learn more: https://portal.thirdweb.com/glossary/gasless-transactions
 
 ## Deploying Your Site
 
@@ -82,6 +62,3 @@ This will deploy your site and output the IPFS hash of your site. You can then g
 
 You can also deploy it to any centralized server like any normal website.
 
-## Join our Discord!
-
-For any questions or suggestions, join our discord at [https://discord.gg/thirdweb](https://discord.gg/thirdweb).
